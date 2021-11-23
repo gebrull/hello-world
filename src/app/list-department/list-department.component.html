@@ -14,10 +14,14 @@
     <ul>
         <!-- Aqui, colocamos o listener de click em cada elemento da lista
              e definimos que vamos chamar o método onSelect() na classe passando
-             como argumento o objeto departamento -->
+             como argumento o objeto departamento
+            Também usaremos a diretiva ngIf para saber se o id do departamento é o
+            mesmo id do departamento selecionado anteriormente -->
         <li (click)="onSelect(department)" *ngFor="let department of departments">
-            <button class="btn-primary"><span>{{department.id}}</span> - {{department.name}}</button>
-            
+            <button *ngIf="isSelected(department); else elseBlock" class="btn-danger"><span>{{department.id}}</span> - {{department.name}}</button>
+            <ng-template #elseBlock>
+                <button class="btn-primary"><span>{{department.id}}</span> - {{department.name}}</button>
+            </ng-template>
         </li>
 
     </ul>

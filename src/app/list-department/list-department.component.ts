@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-list-department',
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-department.component.css']
 })
 export class ListDepartmentComponent implements OnInit {
+
+  public selectedId : any;
 
   departments = [
     {"id":1, "name": "Angular"},
@@ -19,10 +21,18 @@ export class ListDepartmentComponent implements OnInit {
 
   /**Para usar o routing dentro do códogo, precisamos importar o Router lá em cima.
    * Depois, vamos instanciar o router no construtor de department
+   * Para poder acessar uma informação que é fornecida na rota, precisamos importar o
+   * ActivatedRoute lá em cima
    */
-  constructor(private router : Router) { }
+  constructor(private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe((params : ParamMap) => {
+      let id = Number(params.get('id'));
+      this.selectedId = id;
+    });
+
   }
 
   onSelect(department: any){
@@ -33,5 +43,8 @@ export class ListDepartmentComponent implements OnInit {
     this.router.navigate(['/departments', department.id])
   }
 
+  isSelected(department : any){
+    return department.id === this.selectedId;
+  }
 
 }

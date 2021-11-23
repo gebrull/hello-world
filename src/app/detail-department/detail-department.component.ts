@@ -29,8 +29,8 @@ export class DetailDepartmentComponent implements OnInit {
      * verifica se precisa ou não carregar um component novo ou apenas reusar o que já existe.
      * E com isso, ele não atualiza o departmentId, já que o ngOnInit() não será chamado novamente.
      */
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.departmentId = id;
+    // let id = Number(this.route.snapshot.paramMap.get('id'));
+    // this.departmentId = id;
 
     /**E é por isso que iremos usar Observables 
      * O paramMap retorna um observable. Por isso, precisamos dar subscribe nele.
@@ -64,7 +64,15 @@ export class DetailDepartmentComponent implements OnInit {
     this.router.navigate(['/departments', nextId]);
   }
 
+  gotoDepartments(){
+    // Irá verificar se o departamento selecionado possui id
+    let selectedId = this.departmentId ? this.departmentId : null;
 
+    /**Nesse cado do navigate, o segundo parâmetro vai ser um objeto
+     * contendo chaves e valores
+     */
+    this.router.navigate(["/departments", {id: selectedId}]);
+  }
 
 
 
