@@ -45,26 +45,33 @@
 
         
         <!-- Usando a Injeção de dependência -->
-        <div class="col-6">
+        <!-- <div class="col-6">
             <app-list-employee></app-list-employee>
         </div>
-
-
         <div class="col-6">
             <app-detail-employee></app-detail-employee>
-        </div>
-        
-        
+        </div> -->
+          
+
+        <!-- Começando a usar routing -->
+
+
+
 
 
     </div>
     
+    <nav>
+        <!-- Usamos aqui o routerLink para especificar o endereço para encaminhar -->
+        <a routerLink="/departments"><button class="btn-primary">Departments</button></a>
+        <a routerLink="/employees"><button class="btn-primary">Employees</button></a>
+    </nav>
 
 
-
-    
 
 <router-outlet></router-outlet>
+
+
     
 </body>
 </html>
