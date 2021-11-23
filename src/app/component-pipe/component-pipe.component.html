@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Pipe</title>
+</head>
+<body>
+    <h1>Component pipe</h1>
+
+    <h4>{{name}}</h4>
+
+    <h4>Exemplo de Pipe | lowercase: {{name | lowercase}}</h4>
+    <h4>Exemplo de Pipe | uppercase: {{name | uppercase}}</h4>
+
+    <h4>Exemplo de Pipe | titlecase: {{name | titlecase}}</h4>
+
+    <h4>Exemplo de Pipe | slice: {{name | slice: 4}}</h4>
+
+    <h4>Exemplo de Pipe | Json: {{person | json}}</h4>
+
+    <!-- O pipe de numeros funciona da seguinte forma: -->
+    <!-- numero_com_ou_sem_digito | number: 'x.'y-z -->
+    <!-- Onde "x" é um número que representa a quantidade minima de digitos antes do ponto -->
+    <!-- "y" representa a quantidade minima de digitos depois do ponto -->
+    <!-- E "z" representa a quantidade maxima de dígitos depois do ponto -->
+
+
+    <h2>Pipe de numeros: {{5.678 | number: '1.2-3'}}</h2>
+    <h2>Pipe de numeros: {{5.678 | number: '3.4-5'}}</h2>
+    <h2>Pipe de numeros: {{5.678 | number: '3.1-2'}}</h2>
+
+    <!-- Mostra a representação em porcentagem -->
+    <h2>Pipe de numeros: {{0.27 | percent}}</h2>
+
+    <!-- Mostra a representação monetária -->
+    <h2>Pipe de numeros: {{0.87 | currency}}</h2>
+
+    <!-- Ao colocar como argumento o código do país, a representação monetária passa para aquele país -->
+    <h2>Pipe de numeros: {{0.87 | currency: 'BRL'}}</h2>
+
+
+    <h2>Pipe de Date, padrão: {{date}}</h2>
+    <h2>Pipe de Date, short: {{date | date: 'short'}}</h2>
+    <h2>Pipe de Date, short date: {{date | date: 'shortDate'}}</h2>
+    <h2>Pipe de Date, short time: {{date | date: 'shortTime'}}</h2>
+
+    <h2>Pipe de Date, medium date: {{date | date: 'mediumDate'}}</h2>
+    <h2>Pipe de Date, medium time: {{date | date: 'mediumTime'}}</h2>
+
+    <h2>Pipe de Date, long date: {{date | date: 'longDate'}}</h2>
+    <h2>Pipe de Date, long time: {{date | date: 'longTime'}}</h2>
+
+    <!-- Lembrando que o pipe transforma os dados apenas para a view, não muda o valor na classe-->
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <!-- Começando com o ngIf -->
+    <!-- Ao colocar em um elemento o ngIf="true_or_false", podemos fazer ele aparecer ou não -->
+    <h2 *ngIf="true">
+        Usando valor escrito no ngIf: Welcome, Gabriel
+    </h2>
+    <h2 *ngIf="isVisible">
+        Usando valor referenciado do component no ngIf: <br> Se isso aparece, o isVisible é true!
+    </h2>
+
+    <br><br>
+    <!-- Podemos usar o else também -->
+    <!-- Colocamos o ';' e depois a condição else seguido do bloco que será referenciado, no caso, o elseBlock -->
+    <h2 *ngIf="isVisible; else elseBlock1">
+        Se isso aparece, o isVisible é true!
+    </h2>
+    <!-- O ng-template funciona como um conteiner pra colocar html, tipo igual o div, só que permite mais coisas -->
+    <!-- O #elseBlock serve para esse ng-template ser referenciado-->
+    <ng-template #elseBlock1>
+        <br><br><br>
+        <h2>Se isso aparece, o isVisible é false!</h2>
+    </ng-template>
+
+
+    <!-- Também tem como colocar os dois separados com dois ng-template -->
+    <h1>---------Separador----------</h1>
+    <div *ngIf="isVisible; then thenBlock; else elseBlock2"></div>
+    <ng-template #thenBlock>
+        <h2>Se isso aparece, o isVisible é true!</h2>
+    </ng-template>
+
+    <ng-template #elseBlock2>
+        <br>
+        <h2>Se isso aparece, o isVisible é false!</h2>
+    </ng-template>
+
+    <br><br>
+    <!-- Aqui, agora, um exemplo de switch -->
+    <!-- Usamos a diretiva [ngSwitch] -->
+    <div [ngSwitch]="color">
+        <!-- Para cada um dos cases, usamos *ngSwitchCase = "'cor_escolhida'" -->
+        <div *ngSwitchCase="'red'">Você escolheu a cor vermelha!</div>    
+    
+        <div *ngSwitchCase="'blue'">Você escolheu a cor azul!</div>
+
+        <div *ngSwitchCase="'yellow'">Você escolheu a cor amarela!</div>
+
+        <!-- Para o caso default, usamos *ngSwitchDefault -->
+        <div *ngSwitchDefault>Caso default do switch</div>
+
+    </div>
+
+    <!-- Agora veremos a diretiva do ngFor -->
+    <!-- A diretiva usada seguirá a sentaxe: *ngFor="let variável_de_iteraçaõ of array_que_será_iterado" -->
+    <!-- Nós podemos usar o índice também dentro do for, usando o "index as i" -->
+    <!-- Podemos usar o first as f, que nos retornará se o elemento da iteração é o primeiro do array -->
+    <!-- Existe a possibilidade de usar o "odd" ou "even" para retornar se o índice é impar ou par -->
+
+    <div *ngFor="let color of colors; index as i; first as f; last as l; odd as o; even as e">
+
+            <h4>Iteração {{i}} do For, estamos no elemento {{color}}.</h4>
+            <h4>Ele é o primeiro do array? {{f}}.</h4>
+            <h4>Ele é o último do array: {{l}}.</h4>
+            <h4>O índice é impar? {{o}}</h4>
+            <h4>O índice é par? {{e}}</h4>
+            <br>
+    </div>
+
+
+
+
+</body>
+</html>

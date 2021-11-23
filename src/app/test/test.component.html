@@ -1,0 +1,41 @@
+<body [class] = "dayOrNight">
+    <h4>test works!</h4>
+    <h4>Olá meu caro amigo {{name}}</h4>
+
+    <h4>{{2+2}}</h4>
+    <h4>{{"Olá " + name}}</h4>
+
+    <h4>{{"Name length: "+ name.length}}</h4>
+    <h4>{{name.toUpperCase()}}</h4>
+
+    <!-- Para usar o style do css direto, usamos ele como classe da tag mesmo -->
+    <h4 class="text-sucess">{{"Greeting user: "+ greetUser()}}</h4>
+
+    <!-- Essa forma aqui é pra quando quisermos usar uma classe de tag definida no component -->
+    <!-- Lembrando que não é possível usar as duas formas ao mesmo tempo -->
+    <h4 [class]="classSucess">{{"Variável siteUrl: " + siteUrl}}</h4>
+
+    <!-- Existe também uma forma de ativar e desativar a classe de uma tag, que é usando [class.nome_da_classe] = "variável_do_component" -->
+    <h4 [class.text-danger] = "hasError">Se hasError é true, então aqui tá vermelho</h4>
+
+    <!-- Podemos colocar várias classes em uma tag através do component, como mostramos aqui. Oes detalhes estão no component -->
+    <h4 [ngClass]="messageClasses">Esta é uma mensagem que muda</h4>
+
+    <!-- Dá pra mudar o style também usando binding dessa forma abaixo -->
+    <h4 [style.color]= "'orange'">Teste de style binding dentro do html</h4>
+    <!-- Também dá pra pegar o valor pela variável do component, dessa forma: -->
+    <h4 [style.color]= "styleColor">Teste de style binding usando variável do component</h4>
+    <!-- A mudança também pode ser feita através de condicional dentro do html, usando o valor de uma variável do component -->
+    <h4 [style.color]= "hasError ? 'red' : 'green'">Teste de style binding usando condicional no html</h4>
+    <!-- Por último, podemos combinar multiplos styles igual as multiplas classes -->
+    <h4 [ngStyle]="messageStyle">Esta é uma mensagem que muda o style</h4>
+
+
+    <label>Nome: <input [id]="myId" type="text" value="Gabriel"></label><br>
+
+    <!-- É bom colocar os atributos da tag dentro dos colchetes para ficar melhor de manipular -->
+    <label>Nome: <input [disabled]="false" [id]="myId" type="text" value="Gabriel"></label><br>
+
+    <!-- Dá pra pegar os atributos da classe também pra usar aqui, tipo o 'isDisabled' -->
+<label>Nome: <input [disabled]="isDisabled" [id]="myId" type="text" value="Gabriel"></label><br>
+</body>
