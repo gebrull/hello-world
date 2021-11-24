@@ -72,6 +72,16 @@ export class DetailDepartmentComponent implements OnInit {
      * contendo chaves e valores
      */
     this.router.navigate(["/departments", {id: selectedId}]);
+
+    /**Usar uma Url absoluta pode causar problemas se for necessário fazer alterações em algum elemento
+     * que faça parte de qualquer Url. Por isso é bom utilizar a navegação relativa. Que não precisa levar
+     * em consideração qual é a url atual para trabalhar
+     */
+    /**O navigate nesse caso, receberá como arumentos uma lista com o endereço que será anexado a rota 
+     * atual(no cado, o '../' funciona como o comando cd no terminal e volta um nível) e um parametro; e o
+     * segundo argumento é um objeto route que diz a rota atual, na qual o '../' deverá ser anexado.
+     */
+    this.router.navigate(['../', {id: selectedId}], {relativeTo: this.route});
   }
 
 

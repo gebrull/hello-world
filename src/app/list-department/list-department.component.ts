@@ -40,7 +40,18 @@ export class ListDepartmentComponent implements OnInit {
      * um array com as informações necessárias para o Angular criar uma url. Nesse caso, o angular
      * pega o "/departments" e junta com o valor do department.id para criar a url: /departments/valor_id
      */
-    this.router.navigate(['/departments', department.id])
+    // this.router.navigate(['/departments', department.id])
+
+    /**Usar uma Url absoluta pode causar problemas se for necessário fazer alterações em algum elemento
+     * que faça parte de qualquer Url. Por isso é bom utilizar a navegação relativa. Que não precisa levar
+     * em consideração qual é a url atual para trabalhar
+     */
+    /**Os parametros do navigate() nesse caso, são o department.id que vai informar o caminho que será
+     * anexado na rota atual (relativeTo: this.route)
+    */
+    this.router.navigate([department.id], {relativeTo: this.route});
+
+
   }
 
   isSelected(department : any){
