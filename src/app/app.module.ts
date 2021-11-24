@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { routingComponents } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DetailDepartmentComponent } from './detail-department/detail-department.component';
+import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
+import { DepartmentContactComponent } from './department-contact/department-contact.component';
 
 @NgModule({
   // O array declarations, contém todos os components que serão usados na aplicação
@@ -32,7 +34,9 @@ import { DetailDepartmentComponent } from './detail-department/detail-department
     // Precisamos colocar ele aqui tambem
     routingComponents,
     PageNotFoundComponent,
-    DetailDepartmentComponent
+    DetailDepartmentComponent,
+    DepartmentOverviewComponent,
+    DepartmentContactComponent
   ],
   imports: [
     BrowserModule,

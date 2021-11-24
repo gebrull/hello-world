@@ -11,9 +11,24 @@
 <body>
 
     <h3>Você selecionou o departamento com id: {{departmentId}}</h3>
+
+    <!-- Aqui, nós vamos mostrar os components das rotas filhas da detail-department. 
+         E para isso, vamos usar o <router-outlet> 
+    -->
     
-    <a><button (click)="goPrevious()">Anterior</button></a>
-    <a><button (click)="goNext()">Próximo</button></a>
+    <p>
+        <button class="btn-warning" (click)="showOverview()">Visão geral</button>
+        <button class="btn-warning" (click)="showContact()">Contato</button>
+    </p>
+
+
+    <router-outlet></router-outlet>
+
+    <p>
+        <a><button (click)="goPrevious()">Anterior</button></a>
+        <a><button (click)="goNext()">Próximo</button></a>
+    </p>
+    
 
     <div>
         <button (click)="gotoDepartments()">Voltar</button>
